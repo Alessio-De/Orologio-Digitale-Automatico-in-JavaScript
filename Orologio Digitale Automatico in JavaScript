@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Orologio Digitale</title>
+    <style>
+        body {
+            /* Stile per centrare l'orologio nella pagina */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #orologio {
+            /* Stile per l'orologio */
+            font-size: 4em;
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Elemento HTML che conterrà l'orario -->
+    <div id="orologio"></div>
+
+    <script>
+        // Funzione per aggiornare l'orologio
+        function aggiornaOrologio() {
+            // Ottiene l'ora corrente
+            const orarioCorrente = new Date();
+            
+            // Estrae ore, minuti e secondi
+            let ore = orarioCorrente.getHours();
+            let minuti = orarioCorrente.getMinutes();
+            let secondi = orarioCorrente.getSeconds();
+            
+            // Aggiunge uno zero davanti ai numeri singoli
+            ore = ore < 10 ? "0" + ore : ore;
+            minuti = minuti < 10 ? "0" + minuti : minuti;
+            secondi = secondi < 10 ? "0" + secondi : secondi;
+            
+            // Crea la stringa dell'orario nel formato HH:MM:SS
+            const orarioFormattato = `${ore}:${minuti}:${secondi}`;
+            
+            // Aggiorna il contenuto dell'elemento HTML
+            document.getElementById("orologio").textContent = orarioFormattato;
+        }
+
+        // Esegue la funzione immediatamente per mostrare l'ora corrente
+        aggiornaOrologio();
+        
+        // Imposta l'aggiornamento automatico ogni secondo (1000 millisecondi)
+        setInterval(aggiornaOrologio, 1000);
+    </script>
+</body>
+</html>
